@@ -1,0 +1,119 @@
+
+
+			<!DOCTYPE html>
+			<html>
+			<head>
+			    <title>Exam Result</title>
+			    <link rel="stylesheet" href="/css/style.css">
+			</head>
+
+			<body>
+
+			<div class="background">
+			    
+			    <div class="login-card">
+
+			        <h2>Exam Completed Successfully</h2>
+
+			        <p id="resultText">Loading...</p>
+
+			        <button onclick="goDashboard()">Back to Dashboard</button>
+
+			    </div>
+
+			</div>
+
+
+			<!--<script>
+
+			window.onload = function () {
+
+			    const resultKey = localStorage.getItem("lastExamResult");
+
+			    if (!resultKey) {
+			        document.getElementById("resultText").innerText = "No Result Found";
+			        return;
+			    }
+
+			    const stored = localStorage.getItem(resultKey);
+
+			    if (!stored) {
+			        document.getElementById("resultText").innerText = "No Score Found";
+			        return;
+			    }
+
+			    const result = JSON.parse(stored);
+
+			    document.getElementById("resultText").innerText =
+			        "You have scored: " + result.score;
+
+			};
+			// disable back
+			history.pushState(null, null, location.href);
+
+			window.onpopstate = function () {
+			    history.go(1);
+			};-->
+			
+
+			<script>
+
+			window.onload = function () {
+
+			    const rollNumber = localStorage.getItem("rollNumber");
+			    const examId = localStorage.getItem("currentExamId");
+
+			    if (!rollNumber || !examId) {
+			        document.getElementById("resultText").innerText = "No Result Found";
+			        return;
+			    }
+
+			    fetch(`http://localhost:8081/results/${examId}`)
+			        .then(res => res.json())
+			        .then(results => {
+
+			            let studentResult = results.find(r => 
+			                r.rollNumber === rollNumber
+			            );
+
+			            if (studentResult) {
+
+			                document.getElementById("resultText").innerText =
+			                    "You have scored: " + studentResult.score;
+
+			            } else {
+
+			                document.getElementById("resultText").innerText =
+			                    "Result not found";
+
+			            }
+
+			        })
+			        .catch(err => {
+
+			            console.error(err);
+			            document.getElementById("resultText").innerText =
+			                "Error loading result";
+
+			        });
+
+			};
+
+
+			// disable back
+			history.pushState(null, null, location.href);
+
+			window.onpopstate = function () {
+			    history.go(1);
+			};
+
+			function goDashboard() {
+			    window.location.href = "student-dashboard.html";
+			}
+
+			</script>
+			
+
+			</body>
+			</html>
+			

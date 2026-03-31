@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Failed</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="text-align:center; margin-top:100px; font-family:Arial;">
+
+    <h1 style="color:red;"> Question Update Failed!</h1>
+
+    <h2 id="qid"></h2>
+
+    <p id="msg" style="color:gray;"></p>
+
+    <br><br>
+
+    <button onclick="retry()" 
+        style="padding:10px 20px; background-color:orange; border:none; cursor:pointer;">
+         Try Again
+    </button>
+
+    <button onclick="goBack()" 
+        style="padding:10px 20px; background-color:gray; color:white; border:none; cursor:pointer;">
+         Back to Edit
+    </button>
+
+    <script>
+        // Get data from URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        const msg = params.get("msg");
+
+        // Show Question ID
+        document.getElementById("qid").innerText =
+            "Question ID: " + id;
+
+        // Show error message (if exists)
+        if(msg){
+            document.getElementById("msg").innerText = decodeURIComponent(msg);
+        } else {
+            document.getElementById("msg").innerText =
+                "Something went wrong while updating.";
+        }
+
+        function retry(){
+            window.location.href = "edit-questions.html";
+        }
+
+        function goBack(){
+            window.location.href = "edit-questions.html";
+        }
+    </script>
+
+</body>
+</html>

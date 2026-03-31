@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Add Student</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="login-card">
+
+        <h2>Add Student</h2>
+
+        <input type="text"
+               id="name"
+               placeholder="Student Name">
+
+        <br><br>
+
+        <input type="text"
+               id="rollNo"
+               placeholder="Roll Number">
+
+        <br><br>
+
+        <button onclick="addStudent()">
+            Add Student
+        </button>
+
+        <br><br>
+
+        <button onclick="goBack()">
+            Back
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function addStudent() {
+
+    const name =
+        document.getElementById("name").value;
+
+    const rollNo =
+        document.getElementById("rollNo").value;
+
+    if (!name || !rollNo) {
+
+        alert("Enter all fields");
+        return;
+    }
+
+    fetch(
+        "http://localhost:8081/user/add-student",
+        {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                name: name,
+                rollNo: rollNo
+
+            })
+
+        }
+    )
+    .then(res => res.json())
+    .then(() => {
+
+        alert("Student Added Successfully");
+
+        document.getElementById("name").value = "";
+        document.getElementById("rollNo").value = "";
+
+    })
+    .catch(() => {
+
+        alert("Error adding student");
+
+    });
+
+}
+
+function goBack() {
+
+    window.location.href =
+        "teacher-dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>

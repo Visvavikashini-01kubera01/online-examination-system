@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Online Exam System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="background">
+    <div class="login-card">
+		<center>
+        <h3>   DEPARTMENT OF CYBERSECURITY</h3>
+		</center>
+		<h3>WELCOME TO ONLINE EXAM</h3>
+        <p class="subtitle">Login to continue</p>
+
+        <input type="text" id="name" placeholder="Enter Username" required>
+
+        <input type="password" id="password" placeholder="Enter Password" required>
+		
+
+        <select id="role" onchange="toggleRollInput()" required>
+            <option value="">Select Role</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
+
+		<input type="text" id="rollNumber" placeholder="Enter Roll Number">
+
+        <button onclick="login()">Login</button>
+		
+        <p class="register-link">
+            New user? <a href="register.html">Register here</a>
+        </p>
+    </div>
+</div>
+
+<script>
+
+function toggleRollInput() {
+
+    const role = document.getElementById("role").value;
+    const rollField = document.getElementById("rollNumber");
+
+    if (role === "student") {
+        rollField.style.display = "block";
+    } else {
+        rollField.style.display = "none";
+        rollField.value = "";
+    }
+}
+
+window.onload = function() {
+    toggleRollInput();
+};
+
+
+</script>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

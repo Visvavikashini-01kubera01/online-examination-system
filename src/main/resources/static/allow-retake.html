@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <style>
+
+			body {
+			    margin: 0;
+			    font-family: Arial, sans-serif;
+			    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+			    color: white;
+				
+			 padding: 0;
+			 height: 100vh;
+			 						            display: flex;
+			 						            justify-content: center;
+			 						            align-items: center;
+			 						        }
+						            
+						            
+
+
+
+
+			
+
+		        .container {
+		            background: white;
+		            padding: 40px;
+		            border-radius: 12px;
+		            width: 400px;
+		            text-align: center;
+		            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+		        }
+
+		        h2 {
+		            margin-bottom: 20px;
+		            color: #4b0082;
+		        }
+
+		        input {
+		            width: 90%;
+		            padding: 12px;
+		            margin: 10px 0;
+		            border-radius: 6px;
+		            border: 1px solid #ccc;
+		            font-size: 14px;
+		        }
+
+		        button {
+		            padding: 12px 20px;
+		            background: #6a5acd;
+		            color: white;
+		            border: none;
+		            border-radius: 6px;
+		            cursor: pointer;
+		            margin-top: 15px;
+		            font-size: 15px;
+		        }
+
+		        button:hover {
+		            background: #4b0082;
+		        }
+
+		        #message {
+		            margin-top: 15px;
+		            font-weight: bold;
+		        }
+
+		    </style>
+		</head>
+	</head>
+	<body>
+		<div class="container">
+		<h2>Allow Re-attempt</h2>
+
+		<input type="number" id="examId" placeholder="Enter Exam ID"><br><br>
+		<input type="text" id="rollNo" placeholder="Enter Student Roll No"><br><br>
+
+		<button onclick="allowRetake()">Allow Retake</button>
+		<button onclick="goBack()">Back to Edit</button>
+		</div>
+		<script>
+			function goBack(){
+			           window.location.href = "dashboard-teacher.html";
+			       }
+		</script>
+		<script src="/js/teacher.js"></script>
+	</body>
+</html>

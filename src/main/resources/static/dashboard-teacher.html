@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="ccontainer">
+
+    <h2>Welcome to Teacher Dashboard</h2>
+
+    <p id="welcomeTeacher"></p>
+
+    <button onclick="goToCreate()">Create Exam</button>
+
+    <button onclick="window.location.href='teacher-exam-list.html'">
+        View Exam IDs and Titles
+    </button>
+
+    <button onclick="goToView()">View Questions</button>
+
+    <button onclick="goToEdit()">Edit Questions</button>
+
+    <button onclick="goToMarks()">View Results</button>
+
+    <button onclick="goToDeleteExam()">Delete Exam</button>
+
+    <button onclick="goToRetake()">Retake</button>
+	<button onclick="goToChangePassword()">Change Password</button>
+
+    <!--<button onclick="goAddStudent()">Add Student</button>-->
+
+    <button onclick="logout()">Logout</button>
+
+</div>
+
+<!--<script>
+
+const username = localStorage.getItem("username");
+const role = localStorage.getItem("role");
+
+if(!username || role !== "teacher"){
+    window.location.href = "login.html";
+}
+
+document.getElementById("welcomeTeacher").innerText =
+    "Welcome " + username;
+
+</script>--><script>
+function goToChangePassword(){
+    window.location.href = "change-password.html";
+}	
+</script>
+
+<script src="js/teacher.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

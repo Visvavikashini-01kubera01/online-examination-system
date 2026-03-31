@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Success</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body style="text-align:center; margin-top:100px; font-family:Arial;">
+
+    <h1 style="color:green;">Question Updated Successfully!</h1>
+
+    <h2 id="qid"></h2>
+
+    <br>
+
+    <button onclick="goBack()">Back to Edit</button>
+
+    <script>
+        // Get ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        document.getElementById("qid").innerText =
+            "Updated Question ID: " + id;
+
+        function goBack(){
+            window.location.href = "dashboard-teacher.html";
+        }
+    </script>
+
+</body>
+</html>

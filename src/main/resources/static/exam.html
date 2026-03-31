@@ -1,0 +1,167 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+<title>Exam</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="login-card">
+
+<h2 id="examTitle">Online Exam</h2>
+
+<p>Time Remaining: <span id="timer">00:00</span></p>
+
+<div id="questionContainer"></div>
+
+<button onclick="submitExam()">Submit Exam</button>
+
+</div>
+<script>
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener("copy", function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener("paste", function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener("cut", function(e) {
+    e.preventDefault();
+});
+</script>
+<script>
+document.onkeydown = function(e) {
+
+if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'u')) {
+return false;
+}
+
+if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+return false;
+}
+
+};
+</script>
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("copy", e => e.preventDefault());
+
+document.addEventListener("paste", e => e.preventDefault());
+
+document.addEventListener("cut", e => e.preventDefault());
+
+// 🚫 Disable back button
+
+</script>
+
+<script src="js/exam.js"></script>
+
+</body>
+</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam</title>
+    <link rel="stylesheet" href="css/style.css">
+	
+
+
+
+	<style>
+		body {
+		    margin: 0;
+		    padding: 0;
+		    overflow-y: auto;
+		}
+
+		.question-box {
+		    width: 80%;
+		    margin: auto;
+		    margin-top: 20px;
+		    padding: 20px;
+		}
+	</style>
+</head>
+<body>
+<div class="question-box">
+
+    <h2 id="examTitle">Online Exam</h2>
+
+    <p>Time Remaining: <span id="timer">00:00</span></p>
+
+    <div id="questionContainer"></div>
+
+    <button onclick="submitExam()">Submit Exam</button>
+	
+</div>
+
+<!-- 🚫 Disable Right Click, Copy, Paste -->
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("copy", e => e.preventDefault());
+document.addEventListener("paste", e => e.preventDefault());
+document.addEventListener("cut", e => e.preventDefault());
+</script>
+
+<!-- 🚫 Disable DevTools Shortcuts -->
+<script>
+document.onkeydown = function(e) {
+
+    // Block Ctrl+C, Ctrl+V, Ctrl+U
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'u')) {
+        return false;
+    }
+
+    // Block Ctrl+Shift+I (Inspect)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        return false;
+    }
+
+};
+</script>
+
+<!-- 🔥 FULLSCREEN + BACK BLOCK -->
+<script>
+window.onload = function () {
+
+    // ✅ ENTER FULLSCREEN
+    let elem = document.documentElement;
+
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+    }
+
+    // 🚫 Disable BACK button
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+};
+
+// ❌ If user exits fullscreen → redirect
+/*document.addEventListener("fullscreenchange", function () {
+    if (!document.fullscreenElement) {
+        alert("❌ You exited the exam!");
+        window.location.href = "student-dashboard.html";
+    }
+});*/
+</script>
+
+<!-- 📌 Your main JS -->
+<script src="/js/app.js"></script>
+<script src="/js/teacher.js"></script>
+<script src="/js/exam.js"></script>"
+</body>
+</html>

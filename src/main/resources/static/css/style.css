@@ -1,0 +1,200 @@
+/* 🌟 GLOBAL */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* 🌟 BACKGROUND CONTAINER */
+.background {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 30px 0;
+}
+
+/* 🌟 CARD (LOGIN / DASHBOARD / EXAM) */
+.login-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    width: 450px;
+    max-width: 95%;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.4);
+    text-align: center;
+}
+
+/* 🌟 INPUTS */
+.login-card input,
+.login-card select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+/* 🌟 BUTTON */
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.login-card button:hover {
+    box-shadow: 0 0 10px #00c6ff;
+}
+
+/* 🌟 HEADER */
+.dashboard-header h2 {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* 🌟 EXAM CARD */
+.exam-item {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #00ffff;
+    text-align: left;
+}
+
+/* BUTTON */
+.exam-item button {
+    background: #00c6ff;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.exam-item button:hover {
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* 🌟 TIMER 
+#timer {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff4d4d;
+    background: rgba(255,0,0,0.1);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+*/
+/* 🌟 QUESTIONS 
+.question-card {
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #00ffff;
+}
+/*refer for this in exam.js
+/* OPTION FIX 
+.option {
+    display: inline-flex;
+   align-items: center;
+    gap: 6px;
+    margin: 6px 0;
+    cursor: pointer;
+	width:100%;
+}
+
+.option input[type="radio"] {
+    margin: 0;
+    transform: scale(1.1);
+}
+.option span {
+    display: inline-block;
+	margin-left:2px;
+}
+
+
+#timer {
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+    background: #ffe5e5;
+    padding: 8px 12px;
+    border-radius: 8px;
+}*/
+
+/* Questions area scroll */
+.questions-form {
+    max-height: 350px;
+	overflow-y: auto;
+    padding-right: 10px;
+}
+
+
+
+/* Submit button bottom */
+.exam-footer {
+    margin-top: 20px;
+}
+
+
+/* 🌟 RESULT BOX 
+.question-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,255,255,0.4);
+}
+
+.question-box h2 {
+    color: #00ffff;
+}
+
+.question-box h3 {
+    color: #00ff99;
+}*/
+
+/* 🌟 GENERAL BUTTON */
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 🌟 CONTAINER */
+.container {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,255,255,0.4);
+}
+
+/* 🌟 DISABLE TEXT SELECT */
+body {
+    user-select: none;
+}	

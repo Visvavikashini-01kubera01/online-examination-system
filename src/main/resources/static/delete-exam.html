@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Exam</title>
+	<style>
+
+	body {
+	    margin: 0;
+	    font-family: Arial, sans-serif;
+	    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+	    color: white;
+	}
+
+	/* 🌟 MAIN CENTER BOX */
+	.main-box {
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;   /* center horizontally */
+	    justify-content: center;
+	    margin-top: 100px;
+	    text-align: center;
+	}
+
+	/* 🌟 TITLE */
+	.main-box h2 {
+	    color: #00ffff;
+	    text-shadow: 0 0 10px #00ffff;
+	    margin-bottom: 25px;
+	}
+
+	/* 🌟 INPUT + BUTTON ROW */
+	.form-row {
+	    display: flex;
+	    gap: 10px;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+	/* INPUT STYLE */
+	.form-row input {
+	    width: 250px;
+	    padding: 12px;
+	    border-radius: 8px;
+	    border: none;
+	    outline: none;
+	}
+
+	/* BUTTON STYLE */
+	.form-row button {
+	    padding: 12px 20px;
+	    border-radius: 8px;
+	    border: none;
+	    background: linear-gradient(to right, #00c6ff, #0072ff);
+	    color: white;
+	    cursor: pointer;
+	}
+
+	/* HOVER EFFECT */
+	.form-row button:hover {
+	    box-shadow: 0 0 10px #00ffff;
+	}
+
+	/* 🌟 CONTENT AREA (FOR RESULTS / QUESTIONS) */
+	.result-box {
+	    width: 60%;
+	    margin-top: 30px;
+	    background: rgba(255,255,255,0.08);
+	    padding: 20px;
+	    border-radius: 10px;
+	    backdrop-filter: blur(10px);
+	    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+	}
+	</style><style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* 🌟 MAIN CENTER BOX */
+.main-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* center horizontally */
+    justify-content: center;
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* 🌟 TITLE */
+.main-box h2 {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    margin-bottom: 25px;
+}
+
+/* 🌟 INPUT + BUTTON ROW */
+.form-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* INPUT STYLE */
+.form-row input {
+    width: 250px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* BUTTON STYLE */
+.form-row button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.form-row button:hover {
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* 🌟 CONTENT AREA (FOR RESULTS / QUESTIONS) */
+.result-box {
+    width: 60%;
+    margin-top: 30px;
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+</style>
+	
+</head>
+<body>
+	<div class="main-box">
+<h2>Delete Exam</h2>
+<div class="form-row">
+<input type="number" id="examId" placeholder="Enter Exam ID">
+<br><br>
+
+<button onclick="deleteExam()">Delete</button>
+<button onclick="goBack()">Back to Edit</button>
+</div>
+<script>
+function deleteExam(){
+
+    let examId = document.getElementById("examId").value;
+
+    if(!examId){
+        alert("Enter Exam ID");
+        return;
+    }
+
+    if(!confirm("Delete this exam?")) return;
+
+    fetch("http://localhost:8081/exam/delete/" + examId,{
+        method:"DELETE"
+    })
+    .then(res=>{
+        if(res.ok){
+            alert("Exam Deleted Successfully ");
+        }else{
+            alert("Delete Failed ");
+        }
+    });
+}
+</script>
+<script>
+	function goBack(){
+	           window.location.href = "dashboard-teacher.html";
+	       }		   
+</script>
+
+</body>
+</html>
