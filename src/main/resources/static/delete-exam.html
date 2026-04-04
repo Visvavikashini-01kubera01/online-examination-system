@@ -163,7 +163,7 @@ function deleteExam(){
 
     if(!confirm("Delete this exam?")) return;
 
-    fetch("http://localhost:8081/exam/delete/" + examId,{
+    fetch("/exam/delete/" + examId,{
         method:"DELETE"
     })
     .then(res=>{

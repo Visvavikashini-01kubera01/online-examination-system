@@ -142,7 +142,7 @@ function registerUser(event) {
         return;
     }
 
-    fetch("http://localhost:8081/user/register", {
+    fetch("/user/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -163,7 +163,7 @@ function registerUser(event) {
     .catch(err => {
         console.error(err);
 		document.getElementById("message").style.color = "red";
-		document.getElementById("message").innerText = "❌ Registration failed!";
+		document.getElementById("message").innerText = "Registration failed!";
     });
 }
 

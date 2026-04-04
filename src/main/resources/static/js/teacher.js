@@ -149,40 +149,7 @@ container.innerHTML+=`
 
 } 
 
-/*function generateQuestions(){
 
-    let count = parseInt(document.getElementById("questionCount").value);
-    let container = document.getElementById("questionsContainer");
-
-    container.innerHTML = "";
-
-    if(!count || count <= 0){
-        alert("Enter valid number");
-        return;
-    }
-
-    // 🔥 HIDE TOP SECTION
-    document.getElementById("topSection").style.display = "none";
-
-    for(let i=1; i<=count; i++){
-        container.innerHTML += `
-        <div style="border:1px solid gray;padding:10px;margin:10px">
-            <h4>Question ${i}</h4>
-
-            <textarea placeholder="Enter Question"></textarea>
-
-            <input type="text" placeholder="Option A">
-            <input type="text" placeholder="Option B">
-            <input type="text" placeholder="Option C">
-            <input type="text" placeholder="Option D">
-
-            <input type="text" placeholder="Correct Answer">
-        </div>
-        `;
-    }
-
-    window.scrollTo(0,0);
-}*/
 function submitQuestions(){
 
 let examId=document.getElementById("examId").value;
@@ -254,32 +221,7 @@ function goToMarks(){
     window.location.href = "teacher-results.html";
 }
 
-/*function loadMarks() {
-    let examId = document.getElementById("examId").value;
-    let output = `<table border="1" cellpadding="10">
-                    <tr><th>Name</th><th>Roll No</th><th>Exam ID</th><th>Score</th></tr>`;
 
-    let found = false;
-
-    for(let i=0; i<localStorage.length; i++){
-        let key = localStorage.key(i);
-        if(key.startsWith("exam_" + examId + "_")){
-            let data = JSON.parse(localStorage.getItem(key));
-            output += `<tr>
-                        <td>${data.name}</td>
-                        <td>${data.roll}</td>
-                        <td>${data.examId}</td>
-                        <td>${data.score}</td>
-                       </tr>`;
-            found = true;
-        }
-    }
-
-    output += "</table>";
-    if(!found) output = "<p>No student results found</p>";
-
-    document.getElementById("marksList").innerHTML = output;
-}*/
 function loadMarks() {
 
     const examId = document.getElementById("examId").value;
@@ -324,58 +266,7 @@ function goToEdit(){
 // ===============================
 // LOAD QUESTIONS FOR EDIT
 // ===============================
-/*function loadQuestions(){
 
-    let examId = document.getElementById("examId").value;
-
-    fetch("http://localhost:8081/question/exam/" + examId)
-    .then(res => res.json())
-    .then(data => {
-
-        let container = document.getElementById("questionList");
-        container.innerHTML = "";
-
-        data.forEach(q => {
-
-            container.innerHTML += `
-            <div style="border:1px solid #ccc;margin:10px;padding:10px">
-
-                <h4>Question ID: ${q.id}</h4>
-
-                <textarea id="q_${q.id}" style="width:100%;height:60px;">
-${q.questionText}</textarea>
-
-                <br><br>
-
-                <input type="text" id="a_${q.id}" value="${q.optionA}" placeholder="Option A"><br><br>
-                <input type="text" id="b_${q.id}" value="${q.optionB}" placeholder="Option B"><br><br>
-                <input type="text" id="c_${q.id}" value="${q.optionC}" placeholder="Option C"><br><br>
-                <input type="text" id="d_${q.id}" value="${q.optionD}" placeholder="Option D"><br><br>
-
-                <input type="text" id="ans_${q.id}" value="${q.correctAnswer}" placeholder="Correct Answer"><br><br>
-
-                <button onclick="updateQuestion(${q.id})">Update</button>
-
-            </div>
-            `;
-        });
-
-    })
-	//for delete
-    .catch(error => {
-        console.error("Error loading questions:", error);
-    });
-	container.innerHTML += `
-	<div style="border:1px solid #ccc;margin:10px;padding:10px">
-
-	    <h4>${q.questionText}</h4>
-
-	    <button onclick="editQuestion(${q.id})">Edit</button>
-	    <button onclick="deleteQuestion(${q.id})" style="color:red;">Delete</button>
-
-	</div>
-	`;
-}*/
 function loadQuestions(){
 
     let examId = document.getElementById("examId").value;
@@ -432,10 +323,10 @@ function deleteQuestion(id){
     })
     .then(res => {
         if(res.ok){
-            alert("✅ Question deleted");
+            alert("Question deleted");
             loadQuestions(); // refresh list
         } else {
-            alert("❌ Delete failed");
+            alert("Delete failed");
         }
     })
     .catch(err => console.error(err));
@@ -458,7 +349,7 @@ function updateQuestion(id){
             id: parseInt(examId)
         }
     };
-//changed removed/after upadte
+//changed removed/after upadte    //"+id;
    fetch("/question/update" + id,  {
         method: "PUT",
         headers: {
@@ -468,9 +359,9 @@ function updateQuestion(id){
     })
     .then(res => {
         if(res.ok){
-            window.location.href="update-success.html?id="+id;
+            window.location.href="update-success.html"+id;
         } else {
-			window.location.href="update-failed-html?id="+id;
+			window.location.href="update-failed.html"+id;
         }
     })
     .catch(error => {
@@ -581,9 +472,9 @@ function deleteExam(){
 	    console.log("Status:", res.status);  // 👈 ADD THIS
 
 	    if(res.ok){
-	        alert("✅ Exam Deleted Successfully");
+	        alert("Exam Deleted Successfully");
 	    }else{
-	        alert("❌ Delete Failed");
+	        alert(" Delete Failed");
 	    }
 	})
     .catch(err => console.error(err));
