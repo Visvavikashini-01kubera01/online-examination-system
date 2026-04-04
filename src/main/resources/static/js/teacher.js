@@ -373,6 +373,8 @@ function deleteQuestion(id){
 }*/
 function updateQuestion(id){
 
+    let examId = document.getElementById("examId").value;
+
     let updatedData = {
         id: id,
         questionText: document.getElementById("q_" + id).value,
@@ -380,7 +382,12 @@ function updateQuestion(id){
         optionB: document.getElementById("b_" + id).value,
         optionC: document.getElementById("c_" + id).value,
         optionD: document.getElementById("d_" + id).value,
-        correctAnswer: document.getElementById("ans_" + id).value
+        correctAnswer: document.getElementById("ans_" + id).value,
+
+        // ✅ ADD BACK THIS (IMPORTANT)
+        exam: {
+            id: parseInt(examId)
+        }
     };
 
     fetch(`/question/update/${id}`, {
