@@ -1,24 +1,20 @@
-# Use official OpenJDK 17 slim image
-FROM eclipse-temurin:17-jdk
+# Use a stable OpenJDK 21 image
+FROM eclipse-temurin:21-jdk
+
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+# Copy all project files into the container
+COPY . .
 
-# Copy src folder
-COPY src src
-
-# Make mvnw executable
+# Make Maven wrapper executable
 RUN chmod +x mvnw
 
-# Build the Spring Boot app (skip tests to save time)
-RUN ./mvnw clean package -DskipTests
+# Build the project
+RUN ./mvnw clean install -DskipTests
 
-# Expose the port your Spring Boot app runs on
+# Expose port 8080 for Spring Boot
 EXPOSE 8080
 
-# Run the built jar
+# Run the Spring Boot application
 CMD ["java", "-jar", "target/SecureOnlineExamSystem-0.0.1-SNAPSHOT.jar"]
