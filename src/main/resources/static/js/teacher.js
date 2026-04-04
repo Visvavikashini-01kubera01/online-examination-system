@@ -334,7 +334,7 @@ function deleteQuestion(id){
 // ===============================
 // UPDATE QUESTION
 // ===============================
-function updateQuestion(id){
+/*function updateQuestion(id){
 
     let examId = document.getElementById("examId").value; // 👈 ADD THIS
 
@@ -365,6 +365,36 @@ function updateQuestion(id){
         } else {
 			//window.location.href="update-failed.html"+id;
 			window.location.href =" update-failed.html?id=${id}"; // ✅ FIXED
+        }
+    })
+    .catch(error => {
+        console.error("Error updating question:", error);
+    });
+}*/
+function updateQuestion(id){
+
+    let updatedData = {
+        id: id,
+        questionText: document.getElementById("q_" + id).value,
+        optionA: document.getElementById("a_" + id).value,
+        optionB: document.getElementById("b_" + id).value,
+        optionC: document.getElementById("c_" + id).value,
+        optionD: document.getElementById("d_" + id).value,
+        correctAnswer: document.getElementById("ans_" + id).value
+    };
+
+    fetch(`/question/update/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedData)
+    })
+    .then(res => {
+        if(res.ok){
+            window.location.href = `update-success.html?id=${id}`;
+        } else {
+            window.location.href = `update-failed.html?id=${id}`;
         }
     })
     .catch(error => {
