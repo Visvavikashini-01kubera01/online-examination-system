@@ -349,8 +349,9 @@ function updateQuestion(id){
             id: parseInt(examId)
         }
     };
-//changed removed/after upadte    //"+id;
-   fetch("/question/update" + id,  {
+//changed removed/after upadte    //"+id; fetch("/question/updat" + id, 
+	fetch(`/question/update/${id}`,
+      {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -359,9 +360,11 @@ function updateQuestion(id){
     })
     .then(res => {
         if(res.ok){
-            window.location.href="update-success.html"+id;
+         //   window.location.href="update-success.html?"+id;
+		 window.location.href = "update-success.html?id=${id}"; // ✅ FIXED
         } else {
-			window.location.href="update-failed.html"+id;
+			//window.location.href="update-failed.html"+id;
+			window.location.href =" update-failed.html?id=${id}"; // ✅ FIXED
         }
     })
     .catch(error => {
