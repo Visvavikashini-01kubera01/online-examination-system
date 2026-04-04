@@ -67,8 +67,9 @@
 			        document.getElementById("resultText").innerText = "No Result Found";
 			        return;
 			    }
+				//fetch(`http://localhost:8081/results/${examId}`)
 
-			    fetch(`http://localhost:8081/results/${examId}`)
+			    fetch(`/results/${rollNumber}/${examId}`)
 			        .then(res => res.json())
 			        .then(results => {
 
