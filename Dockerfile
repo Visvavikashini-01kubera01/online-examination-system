@@ -14,7 +14,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean install -DskipTests
 
 # Expose port 8080 for Spring Boot
-EXPOSE 8080
+EXPOSE 10000
 
 # Run the Spring Boot application
 CMD ["java", "-jar", "target/SecureOnlineExamSystem-0.0.1-SNAPSHOT.jar"]
